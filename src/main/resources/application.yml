@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: enerz
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/enerz_db
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET:c2VjcmV0LWtleS1lbmVyei1zYWFzLXByb2R1Y3Rpb24tMjAyNi1jaGFuZ2UtbWUtaW4tcHJvZHVjdGlvbg==}
+      expiration: 86400000 # 24 hours in milliseconds
+
+server:
+  port: 8080
